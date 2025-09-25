@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Notification
@@ -6,7 +6,8 @@ from .models import Notification
 # Create your views here.
 
 def index(request):
-    return render(request, "authentication/login.html")
+    # return render(request, "authentication/login.html")
+    return render(request, "Home/index.html")
 
 def dashboard(request):
     unread_notification = Notification.objects.filter(user=request.user, is_read=False)
